@@ -3,7 +3,6 @@
 (()=>{
     const aboutSection = document.querySelector(".about-section"),
     tabsContainer = document.querySelector(".about-tabs");
-    console.log("auto invoked");
     tabsContainer.addEventListener('click',(event)=>{
         // if one tab is active then rest of the tabs in about section will be inactive and display none
         if(event.target.classList.contains("tab-item") && !event.target.classList.contains("active")){

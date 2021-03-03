@@ -20,6 +20,7 @@ Global style
     --outer-shadow:3px 3px 3px #d0d0d0,-3px -3px 3px #f8f8f8 ;
     --outer-shadow-0:0 0 0 #d0d0d0,0 0 0 #f8f8f8 ;
     --inner-shadow: inset 3px 3px 3px #d0d0d0,inset -3px -3px 3px #f8f8f8 ;
+    --inner-shadow-0: inset 0 0 0 #d0d0d0,inset 0 0 0 #f8f8f8 ;
 }
 *{
     margin: 0;
@@ -201,6 +202,17 @@ img{
         transform: translateX(25px);
     }
 }
+@keyframes fadeInTop{
+    0%{
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
 .section-title{
     /* background-color: red; */
     padding: 0 15px;
@@ -528,12 +540,11 @@ text-transform: capitalize;
 .about-section .tab-content{
     flex: 0 0 100%;
     max-width: 100%;
-    transition: all .3s ease;
     display: none;
 }
 .about-section .tab-content.active{
-    transition: all .3s ease;
     display: block;
+    animation: fadeInTop .5s ease;
 }
 .about-section .skills .skill-item{
     flex: 0 0 50%;
@@ -682,3 +693,77 @@ text-transform: capitalize;
 .about-section .education .timeline .timeline-item:nth-child(odd) p{
     text-align:right
 }
+
+
+/*----------------
+ service section 
+ -----------------*/
+ .service-section{
+     padding: 80px 0 80px;
+     min-height: 100vh;
+ }
+
+ .service-section .service-item{
+     flex: 0 0 33.33%;
+     max-width: 33.33%;
+     padding: 15px;
+     display: flex;
+     flex-wrap: wrap;
+ }
+ .service-section .service-item-inner{
+     padding: 50px 15px;
+     border-radius: 5px;
+     text-align: center;
+     width: 100%;
+ }
+ .service-section .service-item-inner:hover .icon i{
+     color: var(--skin-color);
+ }
+ .service-section .service-item-inner h3{
+     font-size: 20px;
+     font-weight: 600;
+     color: var(--text-black-700);
+     margin: 0 0 10px;
+     text-transform: capitalize;
+
+ }
+ .service-section .service-item-inner p{
+    font-size: 16px;
+    font-weight: 100;
+    color: var(--text-black-600);
+    margin:0;
+    line-height: 26px;
+ }
+
+ .service-section .service-item-inner .icon{
+     height: 60px;
+     width: 60px;
+     text-align: center;
+     border-radius: 50%;
+     transition: all 0.3s ease;
+     display: block;
+     margin: 0 auto 30px;
+     position: relative;
+ }
+ .service-section .service-item-inner .icon::after{
+     content: '';
+     height: 100%;
+     width: 100%;
+     left: 0;
+     top: 0;
+     position: absolute;
+     border-radius: 50%;
+     transition: all 0.3s ease;
+}
+.service-section .service-item-inner:hover .icon{
+    box-shadow: var(--inner-shadow-0);
+}
+.service-section .service-item-inner:hover .icon::after{
+    box-shadow: var(--outer-shadow);
+}
+
+ .service-section .service-item-inner .icon i{
+     font-size: 25px;
+     line-height: 60px;
+     transition: all 0.3s ease;
+ }
