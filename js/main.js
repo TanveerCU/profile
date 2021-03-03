@@ -19,7 +19,9 @@
     })
 })();
 
-
+function bodyScrollingToggle(){
+    document.body.classList.toggle("stop-scrolling");
+}
 
 /*--------------------------- portfolio filter and popup -------------------------*/
 (()=>{
@@ -42,20 +44,19 @@
             // active new tab-item
             event.target.classList.add("active","outer-shadow")
             const target = event.target.getAttribute("data-target");
-            console.log(target);
+            // console.log(target);
             portfolioItems.forEach((item,i)=>{
                 let catagory = item.getAttribute('data-catagory');
                 if( catagory === target || target === 'all'){
                     // item.classList.add()
                     item.classList.remove('hide');
                     item.classList.add('show');
-                   console.log(portfolioItems[i],i);
+                //    console.log(portfolioItems[i],i);
                 } 
                 else{
                     item.classList.add('hide');
                     item.classList.remove('show');
                 }
-                // portfolioItems[i].classList.remove('hide');
             })
            
         }
@@ -65,10 +66,34 @@
     });
 
     portfolioItemsContainer.addEventListener('click',(event)=>{
-        console.log(event);
+        if(event.target.closest(".portfolio-item-inner")){
+            const portfolioItem = event.target.closest(".portfolio-item-inner").parentElement;
+            // console.log(portfolioItem.parentElement.children);
+            itemIndex = Array.from(portfolioItem.parentElement.children).indexOf(portfolioItem);
+            // console.log(intemIndex);
+            // console.log(portfolioItems[intemIndex]);
+            screenshots = portfolioItems[itemIndex].querySelector(".portfolio-item-img img").getAttribute("data-screenshots");
+            console.log(screenshots);
+            // convert screen shots into array
+            screenshots = screenshots.split(',');
+            slideIndex = 0;
+            console.log(screenshots);
+            popupToggle();
+            popupSlideshow();
+        }
 
     });
 
+    closeBtn.addEventListener('click',()=>{
+        popupToggle();
+    });
 
+    function popupToggle(){
+        popup.classList.toggle("open");
+        bodyScrollingToggle()
+    }
+    function popupSlideshow(){
+        const imgscr = screenshots[slideIndex];
+    }
 
 })();
