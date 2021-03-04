@@ -13,6 +13,7 @@ Global style
     --bg-black-900:#000000;
     --bg-black-100:#dddddd;
     --bg-black-50:#eff0f4;
+    --bg-opacity: rgba(255,255,255,0.5);
     --text-black-900:#000000;
     --text-black-700:#555555;
     --text-black-600:#666666;
@@ -36,7 +37,7 @@ body{
     background-color: var(--bg-black-50);
     /* overflow-y: hidden; */
 }
-body.stop-scrolling{
+body.hidden-scrolling{
     overflow-y: hidden;
 }
 *:not(i){
@@ -95,6 +96,7 @@ img{
     height: 100%;
     width: 100%;
     transition: all 0.3s ease;
+    z-index: -1;
 }
 .hover-in-shadow:hover::after{
     box-shadow: var(--inner-shadow);
@@ -109,6 +111,7 @@ img{
     line-height: 1.5;
     cursor: pointer;
     border-radius: 30px;
+    border: none;
     transition: all 0.3s ease;
 }
 .btn-1::after{
@@ -891,6 +894,33 @@ text-transform: capitalize;
     visibility: visible;
     opacity: 1;
 }
+.portfolio-popup .pp-loader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2000;
+    background-color: var(--bg-opacity);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+}
+.portfolio-popup .pp-loader.active{
+    visibility:visible;
+    opacity: 1;
+}
+.portfolio-popup .pp-loader div{
+    height: 40px;
+    width: 40px;
+    border:3px solid var(--skin-color);
+    border-radius: 50%;
+    border-right: 3px solid transparent;
+    animation: spin .3s linear infinite;
+
+}
 .portfolio-popup .pp-details{
     /* background-color: fuchsia; */
     max-width: 1350px;
@@ -899,6 +929,10 @@ text-transform: capitalize;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    transition: all .5s ease;
+}
+.portfolio-popup .pp-details.active{
+    opacity: 1;
 }
 .portfolio-popup .pp-details-inner{
     padding: 30px 0;
@@ -1065,3 +1099,89 @@ line-height: 40px;
 .portfolio-popup .pp-next{
     right: 15px;
 }
+
+/*----------
+contact section
+------------*/
+.contact-section{
+    /* background: red; */
+    padding: 80px 0 80px;
+    min-height: 100vh;
+}
+.contact-section .contact-item{
+ flex: 0 0 33.33%;
+ max-width: 33.33%;
+ padding: 15px;
+ display: flex;   
+}
+.contact-section .contact-item-inner{
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+}
+.contact-section .contact-item-inner i{
+    font-size: 25px;
+    color: var(--skin-color);
+}
+.contact-section .contact-item-inner span{
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-black-700);
+    margin: 15px 0 10px;
+    text-transform: capitalize;
+}
+.contact-section .contact-item-inner p{
+    font-size: 16px;
+    color: var(--text-black-600);
+    line-height: 26px;
+    margin: 0;
+    word-break: break-word;
+    font-weight: 100;
+}
+.contact-section .contact-form{
+    flex:0 0 100%;
+    max-width: 100%;
+    margin-top: 50px;
+}
+.contact-section .w-50{
+    padding: 0 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.contact-section .input-group{
+    margin: 0 0 25px;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+.contact-section .input-group::after{
+    border-radius: 30px;
+}
+.contact-section .input-group .input-control{
+    height: 45px;
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 0 15px;
+    color: var(--text-black-700);
+}
+.contact-section .input-group textarea.input-control{
+    height: 184px;
+    padding-top: 15px;
+    resize: none;
+    font-size: 16px;
+    padding: 0 15px;
+    color: var(--text-black-700);
+}
+.contact-section .submit-btn{
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: right;
+    color: var(--skin-color);
+    padding: 0 15px;
+}
+
