@@ -1,4 +1,75 @@
-// ------------------- about section tab ------------
+
+/*---------------- navigation menu --------------------*/
+(()=>{
+    const hamburgerBtn = document.querySelector(".hamburger-btn"),
+    navMenu = document.querySelector(".nav-menu"),
+    closeNavBtn = navMenu.querySelector(".close-nav-menu");
+    hamburgerBtn.addEventListener("click",showNavMenu);
+    closeNavBtn.addEventListener("click",hideNavMenu);
+    function showNavMenu(){
+        navMenu.classList.toggle("open");
+        bodyScrollingToggle();
+    }
+    function hideNavMenu(){
+        navMenu.classList.remove("open");
+        bodyScrollingToggle();
+    }
+    
+    document.addEventListener("click",(event)=>{
+        // console.log(event.target);
+        if(event.target.classList.contains("link-item")){
+
+            if(event.target.hash !==""){
+                // prevent default anchor click behavior
+                event.preventDefault();
+                const hash = event.target.hash;
+                // deactive existing active 'section'
+                document.querySelector(".section.active").classList.add("hide");
+                document.querySelector(".section.active").classList.remove("active");
+                // active new section
+                document.querySelector(hash).classList.add("active");
+                document.querySelector(hash).classList.remove("hide");
+                // deactivate existing active nav menu
+                navMenu.querySelector(".active").classList.add("outer-shadow","hover-in-shadow");
+                navMenu.querySelector(".active").classList.remove("active","inner-shadow");
+
+                // if clicked link-item is contained within the navigation menu
+                if(navMenu.classList.contains("open")){
+                    // activate new navigation menu
+                    event.target.classList.add("active","inner-shadow");
+                    event.target.classList.remove("outer-shadow","hover-in-shadow");
+                    // hide nav menu
+                    hideNavMenu();
+                }
+                else{
+                    let navItems =  navMenu.querySelectorAll(".link-item");
+                    navItems.forEach((item)=>{
+                        if(hash === item.hash){
+                            // active navigation menu link-item
+                            item.classList.add("active","inner-shadow");
+                            item.classList.remove("outer-shadow","hover-in-shadow");
+                        }
+                    })
+                }
+
+                // add hash (#) to url
+                window.location.hash = hash;
+            }
+        }
+    })
+
+})();
+
+
+
+
+
+
+
+
+
+
+/* ------------------- about section tab ------------*/
 
 (()=>{
     const aboutSection = document.querySelector(".about-section"),
@@ -22,6 +93,11 @@
 function bodyScrollingToggle(){
     document.body.classList.toggle("hidden-scrolling");
 }
+
+
+
+
+
 
 /*--------------------------- portfolio filter and popup -------------------------*/
 (()=>{
@@ -60,9 +136,9 @@ function bodyScrollingToggle(){
             })
            
         }
-        else{
-            console.log('false');
-        }
+        // else{
+        //     console.log('false');
+        // }
     });
 
     portfolioItemsContainer.addEventListener('click',(event)=>{
@@ -73,7 +149,7 @@ function bodyScrollingToggle(){
             // console.log(intemIndex);
             // console.log(portfolioItems[intemIndex]);
             screenshots = portfolioItems[itemIndex].querySelector(".portfolio-item-img img").getAttribute("data-screenshots");
-            console.log(screenshots);
+            // console.log(screenshots);
             // convert screen shots into array
             screenshots = screenshots.split(',');
             if(screenshots.length == 1){
@@ -84,7 +160,7 @@ function bodyScrollingToggle(){
                 nextBtn.style.display="block";
             }
             slideIndex = 0;
-            console.log(screenshots);
+            // console.log(screenshots);
             popupToggle();
             popupSlideshow();
             popupDetails();
@@ -152,7 +228,7 @@ function bodyScrollingToggle(){
 
     projectDetailsBtn.addEventListener('click',()=>{
         popupDetailsToggle();
-        console.log("hit");
+        // console.log("hit");
     });
 
     function popupDetailsToggle(){
@@ -170,3 +246,33 @@ function bodyScrollingToggle(){
     }
 
 })();
+
+
+
+
+
+
+
+
+/*------------
+hide all sections except active
+----------------*/
+(()=>{
+    const section = document.querySelectorAll(".section");
+    section.forEach((section)=>{
+        if(!section.classList.contains("active")){
+            section.classList.add("hide");
+        }
+        else{
+
+        }
+    })
+})();
+
+window.addEventListener("load",()=>{
+    //preloader
+    document.querySelector(".preloader").classList.add("fade-out");
+    setTimeout(()=>{
+        document.querySelector(".preloader").style.display = "none";
+    },600)
+})

@@ -23,6 +23,22 @@ Global style
     --inner-shadow: inset 3px 3px 3px #d0d0d0,inset -3px -3px 3px #f8f8f8 ;
     --inner-shadow-0: inset 0 0 0 #d0d0d0,inset 0 0 0 #f8f8f8 ;
 }
+/*overrode for dark theme*/
+body.dark{
+    --bg-black-900:#ffffff;
+    --bg-black-100:#353535;
+    --bg-black-50:#2b2c2f;
+    --bg-opacity: rgba(43,44,47,0.5);
+    --text-black-900:#ffffff;
+    --text-black-700:#ffffff;
+    --text-black-600:#bbbbbb;
+    --outer-shadow:3px 3px 3px #222327,-3px -3px 3px #363636 ;
+    --outer-shadow-0:0 0 0 #222327,0 0 0 #363636 ;
+    --inner-shadow: inset 3px 3px 3px #222327,inset -3px -3px 3px #363636 ;
+    --inner-shadow-0: inset 0 0 0 #222327,inset 0 0 0 #363636 ;
+
+    
+}
 *{
     margin: 0;
     padding: 0;
@@ -244,6 +260,55 @@ img{
     font-weight: 600;
     color: var(--skin-color);
 }
+.section.hide{
+    display: none;
+}
+
+/*preloader*/
+.preloader{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 5000;
+    background-color: var(--bg-black-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.preloader.fade-out{
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+.preloader .box{
+    width: 65px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.preloader .box div{
+    height: 15px;
+    width: 15px;
+    background-color: var(--skin-color);
+    border-radius: 50%;
+    animation: loaderAni 1s ease infinite;
+}
+.preloader .box div:nth-child(2){
+    animation-delay: 0.1s;
+}
+.preloader .box div:nth-child(3){
+    animation-delay: 0.2s;
+}
+@keyframes loaderAni{
+    0%,100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-30px);
+    }
+}
+
 /* ------------ 
     header
  ------------- */
@@ -268,6 +333,11 @@ img{
     border-radius: 50%;
     font-weight: 600;
     text-transform: uppercase;
+    overflow: hidden;
+}
+.header .logo a img{
+    height: 100%;
+    width: 100%;
 }
 .header .hamburger-btn{
     height: 40px;
@@ -321,6 +391,13 @@ img{
      opacity: 0;
      visibility: hidden;
      overflow-y: auto;
+     transition: all 0.3s ease-in;
+ }
+ .nav-menu.open{
+    visibility:visible;
+    opacity: 1;
+    z-index: 4000;
+    transition: all 0.3s ease-in;
  }
  .nav-menu .close-nav-menu{
      height: 40px;
@@ -362,7 +439,7 @@ img{
     display: inline-block;
     font-size: 28px;
     font-weight: 600;
-    color: var(--text-black-700);
+    color: var(--text-black-600);
     padding: 5px 30px;
     text-transform: capitalize;
     border-radius: 30px;
@@ -422,7 +499,7 @@ home section
 .home-section .home-text h1{
     font-size: 20px;
     font-weight: 600;
-    color: var(--text-black-700);
+    color: var(--text-black-600);
     text-transform: capitalize;
     margin: 0;
 }
@@ -751,6 +828,7 @@ text-transform: capitalize;
      display: block;
      margin: 0 auto 30px;
      position: relative;
+     color: var(--text-black-600);
  }
  .service-section .service-item-inner .icon::after{
      content: '';
