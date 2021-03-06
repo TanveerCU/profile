@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Optimal Web : Contact Form With JS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        form {
+            margin-left: 30%;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="javascript:sendmail()" method="post">
+
+        <input type="text" name="Name" id="Name" placeholder="Name" required>
+        <button type="submit">Send Message</button>
+    </form>
+
+    <script src="js/email.js"></script>
+</body>
+
+</html>

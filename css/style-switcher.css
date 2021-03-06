@@ -62,3 +62,5 @@
 .style-switcher .color-3{background-color: #1fc586;;}
 .style-switcher .color-4{background-color: #2eb1ed;;}
 .style-switcher .color-5{background-color: #cc3a3b;;}
+.about-section .about-info .link{color: var(--bg-black-900);}
+.portfolio-popup .info a{color: var(--bg-black-900);}

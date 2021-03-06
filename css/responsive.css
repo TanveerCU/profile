@@ -73,6 +73,14 @@
         left: -30px;
         right: auto;
     }
+    .portfolio-popup .description{
+        padding-top: 15px;
+        padding-bottom: 20px;
+        line-height: 15px;
+    }
+    .portfolio-popup .info{
+        line-height: 15px;
+    }
 
 
 }
@@ -84,5 +92,23 @@
     .home-section .home-text h2{
         font-size: 40px;
     }
+}
+@media(max-width: 375px){
+    .effect-4{
+        left: 8%;
+    }
+    .effect-5{
+        right: 2%;
+    } 
+}
+@media(max-width: 320px){
+    .effect-4{
+        left: 6%;
+        top: 15%;
+    }
+    .effect-5{
+        right: 2%;
+        top: 38%;
+    } 
 }
 

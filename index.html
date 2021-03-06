@@ -38,7 +38,7 @@
     <div class="container">
       <div class="row justify-content-between">
         <div class="logo">
-          <a href="http://127.0.0.1:5500/index.html"><img src="img/pro-pic.png" alt="logo"></a>
+          <a href="index.html"><img src="img/pro-pic.png" alt="logo"></a>
         </div>
         <div class=" hamburger-btn outer-shadow hover-in-shadow">
           <span></span>
@@ -168,7 +168,9 @@
             develop a project named Bangla licence plate detection & recognition using artificial neural network.I am a
             problem solver and fast learner, i have participated many Programming contests, ICPC-2019 is a notable one
             among
-            them.</p>
+            them . <a class="link" href="https://icpc.global/ICPCID/AE0PHHSYNJA7" target="_blank"
+              style="text-decoration: underline;">
+              See credential</a></p>
           <p>As a Computer Science & Engineering graduate i am seeking the opportunity to work in a fun and
             challenging working environment that will encourage me to improve and learn new and necessary skills
             as well as be motivated by the company to do my best for the sake of helping myself and the company
@@ -743,22 +745,22 @@
       </div>
       <div class="row">
         <div class="contact-form">
-          <form action="">
+          <form action="javascript:sendmail()" method="post">
             <div class="row">
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Name" class="input-control" required />
+                  <input type="text" placeholder="Name" class="input-control" name="Name" id="name" />
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="email" placeholder="Email" class="input-control" required />
+                  <input type="email" placeholder="Your email" class="input-control" name="email" id="email" />
                 </div>
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <input type="text" placeholder="Subject" class="input-control" required />
+                  <input type="text" placeholder="Subject" class="input-control" name="subject" id="subject" />
                 </div>
               </div>
               <div class="w-50">
                 <div class="input-group outer-shadow hover-in-shadow">
-                  <textarea class="input-control" placeholder="message"></textarea>
+                  <textarea class="input-control" placeholder="message" name="message" id="message"></textarea>
                 </div>
               </div>
             </div>
@@ -804,6 +806,10 @@
   <script src="js/main.js"></script>
   <!-- style switcher js -->
   <script src="js/style-switcher.js"></script>
+  <!-- mail CDN -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <!-- email js -->
+  <script src="js/email.js"></script>
 </body>
 
 </html>
