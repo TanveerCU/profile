@@ -74,6 +74,7 @@ window.addEventListener("load", ()=>{
     }
     else{
         dayNight.querySelector("i").classList.add("fa-moon");
+        closeNavBtn.style.color = "#222327";
     }
 
 })
